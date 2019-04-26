@@ -18,5 +18,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="dispensa">Dispensa</string>
     <string name="calendario">Calendario</string>
+    <string name="Lista">Lista</string>
     <string name="lista">Lista</string>
 </resources>

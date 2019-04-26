@@ -7,6 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,24 +17,25 @@ public class Home extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment=null;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
+                    selectedFragment=new HomeFragment();
+                    break;
                 case R.id.navigation_dispensa:
-                    mTextMessage.setText(R.string.dispensa);
-                    return true;
+                    selectedFragment=new DispensaFragment();
+                    break;
                 case R.id.navigation_calendario:
-                    mTextMessage.setText(R.string.calendario);
-                    return true;
+                    selectedFragment=new CalendarioFragment();
+                    break;
                 case R.id.navigation_lista:
-                    mTextMessage.setText(R.string.lista);
-                    return true;
+                    selectedFragment=new ListaFragment();
+                    break;
             }
-            return false;
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+            return true;
         }
     };
 
