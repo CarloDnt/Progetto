@@ -9,9 +9,10 @@ import io.realm.annotations.*;
 public class ProdottoDisp extends RealmObject implements Parcelable {
 
     @PrimaryKey
-    private int id ,quatita,prezzo;
-    private String nomeProdotto;
+    private int id ;
 
+    private int quatita,prezzo;
+    private String nomeProdotto;
 
     public int getId() {
         return id;
