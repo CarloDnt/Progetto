@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,13 +19,12 @@ public class Registrazione extends AppCompatActivity {
     private EditText password2;
     private Button registrati;
     private RealmUtenti realmManipulator;
-    private static Context appContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione);
-        realmManipulator=RealmUtenti.getRealmInstance(getApplicationContext());
+        realmManipulator=RealmUtenti.getRealmInstance(this);
         username=(EditText)findViewById(R.id.etUsername);
         password=(EditText)findViewById(R.id.etPassword);
         password2=(EditText)findViewById(R.id.etPassword2);
@@ -41,6 +42,11 @@ public class Registrazione extends AppCompatActivity {
             realm.addOrUpdateRealmList(utente);
             Intent intent=new Intent(Registrazione.this, MainActivity.class);
             startActivity(intent);
+        }else{
+            EditText a=findViewById(R.id.etPassword);
+            EditText b=findViewById(R.id.etPassword2);
+            a.setTextColor(Color.rgb(255,0,0));
+            b.setTextColor(Color.rgb(255,0,0));
         }
     }
 }

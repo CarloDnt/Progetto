@@ -3,6 +3,8 @@ package com.example.progettoapplicazionimobili.ui;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.*;
 
@@ -12,6 +14,7 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
     private int id ;
 
     private int quatita,prezzo;
+    private Date scadenza;
     private String nomeProdotto;
 
     public int getId() {
@@ -46,6 +49,14 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         this.prezzo = prezzo;
     }
 
+    public Date getScadenza() {
+        return scadenza;
+    }
+
+    public void setScadenza(Date scadenza) {
+        this.scadenza = scadenza;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -57,16 +68,18 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         dest.writeString(this.nomeProdotto);
         dest.writeInt(this.quatita);
         dest.writeInt(this.prezzo);
+        dest.writeSerializable(this.scadenza);
     }
 
     public ProdottoDisp() {
     }
 
-    public ProdottoDisp(int id, String nomeProdotto,Integer quatita,Integer prezzo) {
+    public ProdottoDisp(int id, String nomeProdotto,Integer quatita,Integer prezzo,Date data) {
         this.id = id;
         this.nomeProdotto = nomeProdotto;
         this.quatita = quatita;
         this.prezzo = prezzo;
+        this.scadenza=data;
 
     }
 
@@ -75,6 +88,7 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         this.nomeProdotto = in.readString();
         this.quatita = in.readInt();
         this.prezzo=in.readInt();
+        this.scadenza=(Date) in.readSerializable();
     }
 
     public static final Parcelable.Creator<ProdottoDisp> CREATOR = new Parcelable.Creator<ProdottoDisp>() {
