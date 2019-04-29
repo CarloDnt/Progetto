@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -32,6 +33,7 @@ public class AggiungiProdotto extends AppCompatActivity {
     Button add;
     ImageButton camera;
     private RealmDispensa realmManipulator;
+    private Bitmap img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +63,11 @@ public class AggiungiProdotto extends AppCompatActivity {
     public void aggiungiProdotto(String nome, Date scadenza,Integer quantita,Integer prezzo,Drawable img,RealmDispensa realm){
         RealmResults<ProdottoDisp> r =realm.getNomeProdotto(nome);
         if(r.size()==0) {
-            Bitmap bitmap = ((BitmapDrawable)img).getBitmap();
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-            byte[] bitMapData = stream.toByteArray();
-            ProdottoDisp prodotto = new ProdottoDisp(nome, quantita, prezzo, scadenza);
+            this.img.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bitmapdata = stream.toByteArray();
+
+            ProdottoDisp prodotto = new ProdottoDisp(nome, quantita, prezzo, scadenza,bitmapdata);
             realm.addOrUpdateRealmList(prodotto);
         }else{
             EditText a=findViewById(R.id.etPNome);
@@ -96,6 +98,7 @@ public class AggiungiProdotto extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+            this.img=imageBitmap;
             ImageButton a=findViewById(R.id.camera);
             a.setImageBitmap(imageBitmap);
         }

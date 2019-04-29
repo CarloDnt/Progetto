@@ -15,6 +15,7 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
 
     private int quatita,prezzo;
     private Date scadenza;
+    private byte[] img;
 
     public String getNomeProdotto() {
         return nomeProdotto;
@@ -48,6 +49,14 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         this.scadenza = scadenza;
     }
 
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -59,17 +68,18 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         dest.writeInt(this.quatita);
         dest.writeInt(this.prezzo);
         dest.writeSerializable(this.scadenza);
+        dest.writeSerializable(this.img);
     }
 
     public ProdottoDisp() {
     }
 
-    public ProdottoDisp(String nomeProdotto,Integer quatita,Integer prezzo,Date data) {
+    public ProdottoDisp(String nomeProdotto,Integer quatita,Integer prezzo,Date data,byte[] img) {
         this.nomeProdotto = nomeProdotto;
         this.quatita = quatita;
         this.prezzo = prezzo;
         this.scadenza=data;
-
+        this.img=img;
     }
 
     protected ProdottoDisp(Parcel in) {
@@ -77,6 +87,7 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         this.quatita = in.readInt();
         this.prezzo=in.readInt();
         this.scadenza=(Date) in.readSerializable();
+        this.img= (byte[]) in.readSerializable();
     }
 
     public static final Parcelable.Creator<ProdottoDisp> CREATOR = new Parcelable.Creator<ProdottoDisp>() {
