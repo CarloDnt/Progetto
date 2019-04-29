@@ -11,12 +11,13 @@
 
     <ImageButton
         android:id="@+id/camera"
-        android:layout_width="122dp"
-        android:layout_height="147dp"
+        android:layout_width="188dp"
+        android:layout_height="172dp"
         android:layout_gravity="center"
-        android:backgroundTint="#AED581"
+        android:background="@drawable/roundbutton"
+        android:backgroundTint="#81C784"
         android:scaleType="fitCenter"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:srcCompat="@android:drawable/ic_menu_camera"></ImageButton>
 
 
     <TextView

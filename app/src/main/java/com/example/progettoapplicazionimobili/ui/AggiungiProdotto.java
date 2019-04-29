@@ -2,6 +2,7 @@ package com.example.progettoapplicazionimobili.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -66,7 +67,6 @@ public class AggiungiProdotto extends AppCompatActivity {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             this.img.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             byte[] bitmapdata = stream.toByteArray();
-
             ProdottoDisp prodotto = new ProdottoDisp(nome, quantita, prezzo, scadenza,bitmapdata);
             realm.addOrUpdateRealmList(prodotto);
         }else{
