@@ -1,24 +1,25 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
-
 import com.example.progettoapplicazionimobili.R;
-
 import static com.example.progettoapplicazionimobili.R.id.swipe;
+
+import java.util.*;
 
 public class CustomSwipe extends PagerAdapter {
 
-    private int[] image_resources = {R.drawable.photo};
+    private int[] image_resources = {R.drawable.fake1, R.drawable.fake2, R.drawable.fake3};
     private int swipeImage = R.drawable.swipe;
     private Context ctx;
     private LayoutInflater layoutInflater;
@@ -34,7 +35,7 @@ public class CustomSwipe extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-        return (view == (LinearLayout)o);
+        return (view == o);
     }
 
     @Override
@@ -44,17 +45,26 @@ public class CustomSwipe extends PagerAdapter {
         View item_view = layoutInflater.inflate(R.layout.viewpager_layout, container,false);
         //photocamera
         ImageView imageView = item_view.findViewById(R.id.image_view);
-        //swipe image
+        //swipe bar
         ImageView swipeView = item_view.findViewById(swipe);
-        //text prodotto scadenza
-        TextView textView = (TextView) item_view.findViewById(R.id.image_count);
-        //text info prodotto
-        TextView infoProduct = (TextView) item_view.findViewById(R.id.info);
+        //Prodotto in scadenza
+        TextView textView = item_view.findViewById(R.id.image_count);
+        //NomeProdotto
+        TextView nomeProdotto = item_view.findViewById(R.id.nome_prodotto);
+        //Nome
+        TextView nome = item_view.findViewById(R.id.nome);
+        //DataScadenza
+        TextView dataScadenza = item_view.findViewById(R.id.data_scadenza);
+        //Date
+        EditText data = item_view.findViewById(R.id.et_date);
 
         imageView.setImageResource(image_resources[position]);
         swipeView.setImageResource(swipeImage);
         textView.setText("Prodotto in scadenza");
-        infoProduct.setText("Nome prodotto: Pasta"+"\n"+"Data scadenza: 29/04/2019");
+        nomeProdotto.setText("Prodotto: ");
+        nome.setText("...");
+        dataScadenza.setText("Data scadenza: ");
+        data.setText("...");
         container.addView(item_view);
 
         return item_view;

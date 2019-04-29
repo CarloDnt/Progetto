@@ -26,16 +26,40 @@
             android:layout_height="190dp"
             tools:srcCompat="@drawable/photo" />
 
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="137dp"
-            android:layout_height="191dp"
-            android:text="Info prodotto"
-            android:textSize="12dp" />
+        <LinearLayout
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nome_prodotto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome Prodotto" />
+
+            <TextView
+                android:id="@+id/nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nome" />
+
+            <TextView
+                android:id="@+id/data_scadenza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Scadenza" />
+
+            <EditText
+                android:id="@+id/et_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/swipe"
-            android:layout_width="31dp"
+            android:layout_width="30dp"
             android:layout_height="190dp"
             tools:srcCompat="@drawable/swipe" />
 
