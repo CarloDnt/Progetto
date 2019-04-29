@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/image_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Prodotto in scadenza"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="50dp"
-        />
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="195dp"
+        android:layout_height="150dp"
         android:orientation="horizontal">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image_view"
-            android:layout_width="230dp"
-            android:layout_height="190dp"
-            tools:srcCompat="@drawable/photo" />
+            android:layout_width="226dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:scaleType="centerCrop"
+            android:src="@drawable/photo"
+            app:civ_border_color="#00000000"
+            app:civ_border_width="1dp" />
 
         <LinearLayout
-            android:layout_width="135dp"
+            android:layout_width="183dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -56,12 +50,6 @@
                 android:ems="10"
                 android:inputType="date" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/swipe"
-            android:layout_width="30dp"
-            android:layout_height="190dp"
-            tools:srcCompat="@drawable/swipe" />
 
     </LinearLayout>
 

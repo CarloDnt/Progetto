@@ -13,14 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 import com.example.progettoapplicazionimobili.R;
-import static com.example.progettoapplicazionimobili.R.id.swipe;
 
 import java.util.*;
 
 public class CustomSwipe extends PagerAdapter {
 
     private int[] image_resources = {R.drawable.fake1, R.drawable.fake2, R.drawable.fake3};
-    private int swipeImage = R.drawable.swipe;
     private Context ctx;
     private LayoutInflater layoutInflater;
 
@@ -44,11 +42,7 @@ public class CustomSwipe extends PagerAdapter {
         layoutInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View item_view = layoutInflater.inflate(R.layout.viewpager_layout, container,false);
         //photocamera
-        ImageView imageView = item_view.findViewById(R.id.image_view);
-        //swipe bar
-        ImageView swipeView = item_view.findViewById(swipe);
-        //Prodotto in scadenza
-        TextView textView = item_view.findViewById(R.id.image_count);
+        ImageView imageView = (ImageView) item_view.findViewById(R.id.image_view);
         //NomeProdotto
         TextView nomeProdotto = item_view.findViewById(R.id.nome_prodotto);
         //Nome
@@ -59,8 +53,6 @@ public class CustomSwipe extends PagerAdapter {
         EditText data = item_view.findViewById(R.id.et_date);
 
         imageView.setImageResource(image_resources[position]);
-        swipeView.setImageResource(swipeImage);
-        textView.setText("Prodotto in scadenza");
         nomeProdotto.setText("Prodotto: ");
         nome.setText("...");
         dataScadenza.setText("Data scadenza: ");
