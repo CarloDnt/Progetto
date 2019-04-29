@@ -1,5 +1,6 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.progettoapplicazionimobili.R;
+
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     private ImageButton add;

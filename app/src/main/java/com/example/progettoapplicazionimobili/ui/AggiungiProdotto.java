@@ -2,14 +2,11 @@ package com.example.progettoapplicazionimobili.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -25,6 +22,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmResults;
+import io.realm.internal.Context;
+
+import static com.example.progettoapplicazionimobili.R.layout.activity_aggiungi_prodotto;
 
 public class AggiungiProdotto extends AppCompatActivity {
     EditText nome;
@@ -33,12 +33,12 @@ public class AggiungiProdotto extends AppCompatActivity {
     EditText prezzo;
     Button add;
     ImageButton camera;
-    private RealmDispensa realmManipulator;
     private Bitmap img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
+    private RealmDispensa realmManipulator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aggiungi_prodotto);
+        setContentView(activity_aggiungi_prodotto);
         realmManipulator=RealmDispensa.getRealmInstance(this);
         nome=(EditText)findViewById(R.id.etPNome);
         scadenza=(DatePicker)findViewById(R.id.etPScadenza);

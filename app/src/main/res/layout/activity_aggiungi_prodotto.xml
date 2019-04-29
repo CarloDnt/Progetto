@@ -17,7 +17,7 @@
         android:background="@drawable/roundbutton"
         android:backgroundTint="#81C784"
         android:scaleType="fitCenter"
-        app:srcCompat="@android:drawable/ic_menu_camera"></ImageButton>
+        app:srcCompat="@android:drawable/ic_menu_camera"/>
 
 
     <TextView
