@@ -1,6 +1,7 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +12,11 @@ import android.widget.EditText;
 import com.example.progettoapplicazionimobili.R;
 
 public class MainActivity extends AppCompatActivity {
+    //LOGIN
     private EditText username;
     private EditText password;
     private Button login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     private void validate(String userName,String userPassword){
         if((userName.equals("Admin")) && (userPassword.equals("1234"))){
             Intent intent=new Intent(MainActivity.this, Home.class);
             startActivity(intent);
         }
     };
-}
+
+} //end MainActivity
