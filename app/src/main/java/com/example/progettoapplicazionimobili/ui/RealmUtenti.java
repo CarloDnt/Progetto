@@ -66,11 +66,22 @@ public class RealmUtenti {
 
         realm.beginTransaction();
 
-        RealmResults realmNotes = realm.where(UtentiApp.class).findAll();
+        RealmResults realmUtenti = realm.where(UtentiApp.class).findAll();
 
         realm.commitTransaction();
 
-        return realmNotes;
+        return realmUtenti;
+
+    }
+    public RealmResults<UtentiApp> getUtentiPrecisi(String userName) {
+
+        realm.beginTransaction();
+
+        RealmResults realmUtenti = realm.where(UtentiApp.class).equalTo("nomeUtente",userName).findAll();
+
+        realm.commitTransaction();
+
+        return realmUtenti;
 
     }
 
@@ -97,4 +108,7 @@ public class RealmUtenti {
 
     }
 
+    public void chiudi(){
+        realm.close();
+    }
 }
