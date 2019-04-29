@@ -7,15 +7,15 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 
-public class RealmManipulator {
+public class RealmDispensa {
 
-    private static RealmManipulator dbManager;
+    private static RealmDispensa dbManager;
 
     private static Realm realm;
 
-    private String realmName = "RealmProdotti";
+    private String realmName = "Dispensa";
 
-    private RealmManipulator(Context context) {
+    private RealmDispensa(Context context) {
 
         if (realm == null) {
 
@@ -37,13 +37,13 @@ public class RealmManipulator {
 
     }
 
-    public static RealmManipulator getRealmInstance(Context context) {
+    public static RealmDispensa getRealmInstance(Context context) {
 
         if (dbManager == null) {
 
             //DBManager Object is Created
 
-            dbManager = new RealmManipulator(context);
+            dbManager = new RealmDispensa(context);
 
         }
 
