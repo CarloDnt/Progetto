@@ -1,5 +1,6 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.example.progettoapplicazionimobili.R;
 
 public class HomeFragment extends Fragment {
-    private ImageView add;
+    private ImageButton add;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +25,13 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        add=(ImageView)getView().findViewById(R.id.add);
+        add=(ImageButton) getView().findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), AggiungiProdotto.class);
+                startActivity(intent);
+            }
+        });
     }
 }

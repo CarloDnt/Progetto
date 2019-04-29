@@ -62,7 +62,7 @@ public class RealmDispensa {
 
     }
     //Get Realm Data
-    public RealmResults getAllProdotti() {
+    public RealmResults<ProdottoDisp> getAllProdotti() {
 
         realm.beginTransaction();
 
@@ -72,6 +72,15 @@ public class RealmDispensa {
 
         return realmNotes;
 
+    }
+    public RealmResults<ProdottoDisp> getNomeProdotto(String nameP){
+        realm.beginTransaction();
+
+        RealmResults realmNotes = realm.where(ProdottoDisp.class).equalTo("nomeProdotto",nameP).findAll();
+
+        realm.commitTransaction();
+
+        return realmNotes;
     }
 
     //Realm Data Updated
