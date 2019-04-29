@@ -2,15 +2,23 @@ package com.example.progettoapplicazionimobili.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.progettoapplicazionimobili.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -22,6 +30,7 @@ public class AggiungiProdotto extends AppCompatActivity {
     EditText quantita;
     EditText prezzo;
     Button add;
+    ImageButton camera;
     private RealmDispensa realmManipulator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +46,25 @@ public class AggiungiProdotto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 aggiungiProdotto(nome.getText().toString(),getDateFromDatePicker(scadenza)
-                        ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),realmManipulator);
+                        ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),add.getBackground(),realmManipulator);
+            }
+        });
+
+        camera=findViewById(R.id.camera);
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
             }
         });
     }
-    public void aggiungiProdotto(String nome, Date scadenza,Integer quantita,Integer prezzo,RealmDispensa realm){
+    public void aggiungiProdotto(String nome, Date scadenza,Integer quantita,Integer prezzo,Drawable img,RealmDispensa realm){
         RealmResults<ProdottoDisp> r =realm.getNomeProdotto(nome);
         if(r.size()==0) {
+            Bitmap bitmap = ((BitmapDrawable)img).getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] bitMapData = stream.toByteArray();
             ProdottoDisp prodotto = new ProdottoDisp(nome, quantita, prezzo, scadenza);
             realm.addOrUpdateRealmList(prodotto);
         }else{
@@ -61,5 +82,22 @@ public class AggiungiProdotto extends AppCompatActivity {
         calendar.set(year, month, day);
 
         return calendar.getTime();
+    }
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageButton a=findViewById(R.id.camera);
+            a.setImageBitmap(imageBitmap);
+        }
     }
 }

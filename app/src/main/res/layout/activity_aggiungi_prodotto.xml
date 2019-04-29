@@ -8,6 +8,17 @@
     android:orientation="vertical"
     tools:context=".ui.AggiungiProdotto">
 
+
+    <ImageButton
+        android:id="@+id/camera"
+        android:layout_width="122dp"
+        android:layout_height="147dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#AED581"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
