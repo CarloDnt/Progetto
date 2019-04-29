@@ -22,24 +22,26 @@ import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.RealmResults;
-import io.realm.internal.Context;
 
-import static com.example.progettoapplicazionimobili.R.layout.activity_aggiungi_prodotto;
+
 
 public class AggiungiProdotto extends AppCompatActivity {
-    EditText nome;
-    DatePicker scadenza;
-    EditText quantita;
-    EditText prezzo;
-    Button add;
-    ImageButton camera;
-    private Bitmap img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
-    private RealmDispensa realmManipulator;
+    private EditText nome;
+    private DatePicker scadenza;
+    private EditText quantita;
+    private EditText prezzo;
+    private Button add;
+    private ImageButton camera;
+    private Bitmap img;
+    private RealmDispensa realmManipulatorDis;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(activity_aggiungi_prodotto);
-        realmManipulator=RealmDispensa.getRealmInstance(this);
+        setContentView(R.layout.activity_aggiungi_prodotto);
+        img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
+        realmManipulatorDis=RealmDispensa.getRealmInstance(this);
         nome=(EditText)findViewById(R.id.etPNome);
         scadenza=(DatePicker)findViewById(R.id.etPScadenza);
         quantita=(EditText)findViewById(R.id.etPQuantita);
@@ -49,7 +51,7 @@ public class AggiungiProdotto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 aggiungiProdotto(nome.getText().toString(),getDateFromDatePicker(scadenza)
-                        ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),add.getBackground(),realmManipulator);
+                        ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),add.getBackground(),realmManipulatorDis);
             }
         });
 
@@ -85,7 +87,6 @@ public class AggiungiProdotto extends AppCompatActivity {
 
         return calendar.getTime();
     }
-    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
