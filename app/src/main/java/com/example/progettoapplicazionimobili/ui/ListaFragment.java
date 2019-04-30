@@ -1,6 +1,7 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,13 +36,23 @@ public class ListaFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         setHasOptionsMenu(true);
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);
+
+
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-        for (int i = 0; i <= 15; i++){
+
+        for (int i = 0; i <= 20; i++){
             View item_view = layoutInflater.inflate(R.layout.item_list, linearLayout, false);
+            LinearLayout llayout = item_view.findViewById(R.id.linear_layout);
+
+            if (i%2 == 0){
+                llayout.setBackgroundColor(getResources().getColor(R.color.colorBackground));
+            } else {
+                llayout.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+            }
 
             //text
             TextView textView = item_view.findViewById(R.id.text);
-            textView.setText("Testo"+i);
+            textView.setText("Testo "+i);
             //quantita
             EditText quantita = item_view.findViewById(R.id.quantita);
             quantita.setText("...");
