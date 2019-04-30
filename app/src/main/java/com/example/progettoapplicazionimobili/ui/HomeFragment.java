@@ -24,6 +24,7 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Home Page");
         super.onViewCreated(view, savedInstanceState);
         add=(ImageButton) getView().findViewById(R.id.add);
         add.setOnClickListener(new View.OnClickListener() {

@@ -11,7 +11,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/nav_view"
-        />
+        >
+
+        <LinearLayout
+            android:id="@+id/homeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/cal"
+                android:layout_width="535px"
+                android:layout_height="535px"
+                android:text="Calendario" />
+
+            <ImageButton
+                android:id="@+id/lsSp"
+                android:layout_width="535px"
+                android:layout_height="535px"
+                android:layout_marginLeft="535px"
+                android:text="Lista Spesa" />
+            <ImageButton
+                android:id="@+id/disp"
+                android:layout_width="1070px"
+                android:layout_height="535px"
+                android:layout_marginTop="535px"
+                android:text="Dispensa" />
+        </LinearLayout>
+    </FrameLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"

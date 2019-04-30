@@ -25,7 +25,6 @@ public class ListaFragment extends Fragment {
     private int addImage = R.drawable.add;
     private int deleteImage = R.drawable.delete;
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -33,6 +32,7 @@ public class ListaFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_lista,container,false);
     }
 
+    @Nullable
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         setHasOptionsMenu(true);
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);

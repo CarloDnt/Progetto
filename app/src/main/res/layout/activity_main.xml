@@ -44,7 +44,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="76dp"
         android:backgroundTint="#4DB6AC"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
