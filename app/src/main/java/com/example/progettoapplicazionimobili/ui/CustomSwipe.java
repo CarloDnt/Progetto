@@ -1,34 +1,38 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.graphics.BitmapFactory;
+import android.icu.text.DateFormat;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.annotation.RequiresApi;
 import androidx.viewpager.widget.PagerAdapter;
 import com.example.progettoapplicazionimobili.R;
-
 import java.util.*;
+import io.realm.RealmResults;
 
 public class CustomSwipe extends PagerAdapter {
 
-    private int[] image_resources = {R.drawable.fake1, R.drawable.fake2, R.drawable.fake3};
     private Context ctx;
     private LayoutInflater layoutInflater;
+    private RealmResults<ProdottoDisp> prodotti;
 
     public CustomSwipe(Context ctx){
         this.ctx = ctx;
+        RealmDispensa dispManager=RealmDispensa.getRealmInstance(this.ctx);
+        this.prodotti=dispManager.getAllProdotti();
     }
 
     @Override
     public int getCount() {
-        return image_resources.length;
+        if(prodotti.size()<10){
+        return prodotti.size();}else{return 10;}
     }
 
     @Override
@@ -36,6 +40,7 @@ public class CustomSwipe extends PagerAdapter {
         return (view == o);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public Object instantiateItem(ViewGroup container, int position){
 
@@ -50,13 +55,16 @@ public class CustomSwipe extends PagerAdapter {
         //DataScadenza
         TextView dataScadenza = item_view.findViewById(R.id.data_scadenza);
         //Date
-        EditText data = item_view.findViewById(R.id.et_date);
+        TextView data = item_view.findViewById(R.id.et_date);
 
-        imageView.setImageResource(image_resources[position]);
+        byte[] img=prodotti.get(position).getImg();
+        imageView.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
         nomeProdotto.setText("Prodotto: ");
-        nome.setText("...");
+        nome.setText(prodotti.get(position).getNomeProdotto());
         dataScadenza.setText("Data scadenza: ");
-        data.setText("...");
+        Date scadenza=prodotti.get(position).getScadenza();
+        String scadenzatxt= DateFormat.getDateInstance(DateFormat.LONG).format(scadenza);
+        data.setText(scadenzatxt);
         container.addView(item_view);
 
         return item_view;
