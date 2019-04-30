@@ -35,12 +35,13 @@ public class ListaFragment extends Fragment {
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         setHasOptionsMenu(true);
+
+        //layout lista fragment
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);
-
-
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
 
         for (int i = 0; i <= 20; i++){
+            //layout righe prodotti lista
             View item_view = layoutInflater.inflate(R.layout.item_list, linearLayout, false);
             LinearLayout llayout = item_view.findViewById(R.id.linear_layout);
 
@@ -78,6 +79,11 @@ public class ListaFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    /**
+     * Gestisce il bottone di aggiunta elementi alla lista della spesa
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
