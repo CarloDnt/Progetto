@@ -26,7 +26,7 @@ public class CustomSwipe extends PagerAdapter {
     public CustomSwipe(Context ctx){
         this.ctx = ctx;
         RealmDispensa dispManager=RealmDispensa.getRealmInstance(this.ctx);
-        this.prodotti=dispManager.getAllProdotti();
+        this.prodotti=dispManager.getAllProdotti().sort("scadenza");
     }
 
     @Override

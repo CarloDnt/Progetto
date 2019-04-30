@@ -1,10 +1,8 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.graphics.Color;
-import android.icu.text.DateFormat;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
