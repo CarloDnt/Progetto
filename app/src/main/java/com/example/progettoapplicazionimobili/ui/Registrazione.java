@@ -1,10 +1,14 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -19,6 +23,7 @@ public class Registrazione extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Registrazione");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrazione);
         realmManipulator=RealmUtenti.getRealmInstance(this);
@@ -33,6 +38,7 @@ public class Registrazione extends AppCompatActivity {
             }
         });
     }
+
     public void registraUtente(String username,String password,String password2,RealmUtenti realm){
         if(password.equals(password2)){
             UtentiApp utente=new UtentiApp(username,password);

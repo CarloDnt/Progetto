@@ -43,6 +43,7 @@ public class CalendarioFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Calendario Scadenze");
         RealmDispensa dispManager=RealmDispensa.getRealmInstance(getContext());
         this.prodotti=dispManager.getAllProdotti();
         return inflater.inflate(R.layout.fragment_calendario,container,false);

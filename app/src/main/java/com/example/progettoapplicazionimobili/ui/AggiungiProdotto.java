@@ -38,6 +38,7 @@ public class AggiungiProdotto extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Aggiungi Prodotto");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_prodotto);
         img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
