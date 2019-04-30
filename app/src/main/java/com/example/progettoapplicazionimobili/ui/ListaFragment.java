@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
+import android.view.*;
 import com.example.progettoapplicazionimobili.R;
 
 import org.w3c.dom.Text;
@@ -27,11 +27,13 @@ public class ListaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        getActivity().setTitle("Lista della Spesa");
         return inflater.inflate(R.layout.fragment_lista,container,false);
     }
 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
-
+        setHasOptionsMenu(true);
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         for (int i = 0; i <= 15; i++){
@@ -53,6 +55,33 @@ public class ListaFragment extends Fragment {
             linearLayout.addView(item_view);
         }
 
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu2, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id=item.getItemId();
+        switch(id)
+        {
+            case R.id.aggiungiElemento:
+			/*
+			 	Codice di gestione aggiunta lista
+			 */
+			    System.out.println("OK");
+                break;
+
+        }
+        return false;
     }
 
 }
