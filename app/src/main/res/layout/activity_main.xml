@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4CAF50"
-    android:backgroundTint="#81C784"
+    android:backgroundTint="@color/primaryLightColor"
     tools:context=".ui.MainActivity">
 
     <EditText
@@ -16,9 +16,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:autofillHints="Username"
+        android:backgroundTint="@color/primaryTextColor"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toTopOf="@+id/etPasswordM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,9 +32,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/primaryTextColor"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toTopOf="@+id/btLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,7 +49,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="76dp"
-        android:backgroundTint="#4DB6AC"
+        android:backgroundTint="@color/secondaryColor"
         android:text="@string/login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +80,7 @@
         android:layout_marginBottom="16dp"
         android:fontFamily="casual"
         android:text="FOOD TRACKER"
+        android:textColor="@color/primaryTextColor"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etUsername"
@@ -92,6 +97,7 @@
         android:layout_marginBottom="8dp"
         android:clickable="true"
         android:text="Make an Account"
+        android:textColor="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

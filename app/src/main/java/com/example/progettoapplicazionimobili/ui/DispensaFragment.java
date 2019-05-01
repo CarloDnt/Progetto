@@ -40,9 +40,9 @@ public class DispensaFragment extends Fragment {
             View viewDispensa = layoutInflater.inflate(R.layout.item_dispensa, layoutDispensa, false);
             LinearLayout layout_riga_dispensa = viewDispensa.findViewById(R.id.riga_dispensa);
             if(i%2 == 0){
-                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.colorBackground));
+                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryDarkColor));
             } else {
-                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
             }
 
             //img prodotto

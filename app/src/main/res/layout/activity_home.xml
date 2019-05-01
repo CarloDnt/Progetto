@@ -38,11 +38,16 @@
                 android:text="Dispensa" />
         </LinearLayout>
     </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
+        android:animateLayoutChanges="false"
+        android:background="@color/primaryDarkColor"
+        android:focusableInTouchMode="false"
+        app:itemIconTint="@color/primaryTextColor"
+        app:itemTextColor="@color/primaryTextColor"
         app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -25,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 import io.realm.RealmResults;
+import me.relex.circleindicator.CircleIndicator;
 
 
 public class CalendarioFragment extends Fragment {
@@ -54,29 +54,9 @@ public class CalendarioFragment extends Fragment {
         viewPager = (ViewPager) getView().findViewById(R.id.viewpager);
         customSwipe = new CustomSwipe(getContext());
         viewPager.setAdapter(customSwipe);
-        bar=getView().findViewById(R.id.barprogress);
-        bar.setMax(customSwipe.getCount()-1);
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                bar.setProgress(viewPager.getCurrentItem(),true);
-            }
-            @Override
-            public void onPageSelected(int position) {
 
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        bar.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        CircleIndicator indicator = (CircleIndicator) view.findViewById(R.id.indicator);
+        indicator.setViewPager(viewPager);
 
         customCalendar = (CompactCalendarView) getView().findViewById(R.id.compactcalendar_view);
         txtevento=getView().findViewById(R.id.Evento);

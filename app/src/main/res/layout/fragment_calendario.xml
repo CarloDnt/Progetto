@@ -5,7 +5,7 @@
     android:id="@+id/twProdottoScad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#81C484"
+    android:background="@color/primaryLightColor"
     android:orientation="vertical">
 
 
@@ -15,22 +15,23 @@
         android:layout_height="274dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:compactCalendarBackgroundColor="@color/colorPrimary"
-        app:compactCalendarCurrentDayBackgroundColor="@color/blue_circle_calendar"
+        app:compactCalendarBackgroundColor="@color/primaryColor"
+        app:compactCalendarCurrentDayBackgroundColor="@color/secondaryColor"
         app:compactCalendarCurrentDayIndicatorStyle="fill_large_indicator"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorPrimaryDark"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="@color/secondaryDarkColor"
         app:compactCalendarCurrentSelectedDayIndicatorStyle="fill_large_indicator"
         app:compactCalendarDisplayOtherMonthDays="false"
-        app:compactCalendarEventIndicatorStyle="fill_large_indicator"
-        app:compactCalendarMultiEventIndicatorColor="#fff"
+        app:compactCalendarEventIndicatorStyle="small_indicator"
+        app:compactCalendarMultiEventIndicatorColor="@color/secondaryDarkColor"
         app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextColor="#fff"
+        app:compactCalendarTextColor="@color/primaryTextColor"
         app:compactCalendarTextSize="12sp" />
 
     <TextView
         android:id="@+id/Evento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/primaryTextColor"
         android:textSize="30sp" />
 
     <TextView
@@ -38,20 +39,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prodotto In Scadenza:"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_marginBottom="@dimen/common_5_dp"
+        android:textColor="@color/primaryTextColor"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:background="#81C784"
-        android:backgroundTint="#AED581" />
+        android:background="@color/primaryLightColor"
+        android:backgroundTint="@color/primaryLightColor" />
 
-    <SeekBar
-        android:id="@+id/barprogress"
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/primaryColor"
         />
 
 

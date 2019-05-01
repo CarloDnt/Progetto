@@ -46,9 +46,9 @@ public class ListaFragment extends Fragment {
             LinearLayout llayout = item_view.findViewById(R.id.linear_layout);
 
             if (i%2 == 0){
-                llayout.setBackgroundColor(getResources().getColor(R.color.colorBackground));
+                llayout.setBackgroundColor(getResources().getColor(R.color.secondaryDarkColor));
             } else {
-                llayout.setBackgroundColor(getResources().getColor(R.color.colorSecondary));
+                llayout.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
             }
 
             //text
