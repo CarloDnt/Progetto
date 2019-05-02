@@ -62,7 +62,7 @@ public class RealmLista {
 
     }
     //Get Realm Data
-    public RealmResults<ProdottoDisp> getAllNotes() {
+    public RealmResults<NotaLista> getAllNotes() {
 
         realm.beginTransaction();
 

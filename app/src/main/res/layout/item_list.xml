@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:id="@+id/linear_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="71dp"
+    android:elevation="@dimen/common_15_dp"
+    >
 
-    <LinearLayout
-        android:id="@+id/linear_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp">
+        android:layout_height="70dp"
+        >
 
         <TextView
             android:id="@+id/text"
-            android:layout_width="255dp"
+            android:layout_width="250dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="@dimen/common_15_dp"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/quantita"
-            android:layout_width="66dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:ems="10"
-            android:gravity="center"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textColor="@color/secondaryTextColor"
+            app:layout_constraintStart_toEndOf="@+id/text" />
 
         <ImageButton
             android:id="@+id/add"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/roundbutton"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/secondaryColor"
             android:clickable="true"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/add" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
-        <ImageButton
-            android:id="@+id/delete"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/roundbutton"
-            android:clickable="true"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/delete" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/secondaryDarkColor"/>
 
 </LinearLayout>

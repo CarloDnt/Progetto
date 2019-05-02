@@ -39,7 +39,6 @@ public class CalendarioFragment extends Fragment {
     private ProgressBar bar;
     private RealmResults<ProdottoDisp> prodotti;
     private CompactCalendarView customCalendar;
-    private TextView txtevento;
     private Dialog devento;
     private static final String TAG = "Calendario";
 
@@ -64,7 +63,6 @@ public class CalendarioFragment extends Fragment {
         indicator.setViewPager(viewPager);
 
         customCalendar = (CompactCalendarView) getView().findViewById(R.id.compactcalendar_view);
-        txtevento=getView().findViewById(R.id.Evento);
 
         for(int i=0;i<prodotti.size();i++) {
             Long time=prodotti.get(i).getScadenza().getTime();

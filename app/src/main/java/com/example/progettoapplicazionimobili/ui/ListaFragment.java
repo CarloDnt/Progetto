@@ -1,13 +1,18 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,15 +25,20 @@ import com.example.progettoapplicazionimobili.R;
 
 import org.w3c.dom.Text;
 
+import io.realm.RealmResults;
+
 public class ListaFragment extends Fragment {
-    Context ctx;
-    private int addImage = R.drawable.add;
-    private int deleteImage = R.drawable.delete;
+    private Context ctx;
+    private RealmResults<NotaLista> lista;
+    private Dialog addDialog;
+    private RealmLista listManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         getActivity().setTitle("Lista della Spesa");
+        listManager=RealmLista.getRealmInstance(getContext());
+        this.lista=listManager.getAllNotes();
         return inflater.inflate(R.layout.fragment_lista,container,false);
     }
 
@@ -40,29 +50,19 @@ public class ListaFragment extends Fragment {
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
 
-        for (int i = 0; i <= 20; i++){
+        for (int i = 0; i <lista.size(); i++){
             //layout righe prodotti lista
             View item_view = layoutInflater.inflate(R.layout.item_list, linearLayout, false);
             LinearLayout llayout = item_view.findViewById(R.id.linear_layout);
-
-            if (i%2 == 0){
-                llayout.setBackgroundColor(getResources().getColor(R.color.secondaryDarkColor));
-            } else {
-                llayout.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
-            }
-
+            llayout.setBackgroundColor(getResources().getColor(R.color.secondaryLightColor));
             //text
             TextView textView = item_view.findViewById(R.id.text);
-            textView.setText("Testo "+i);
+            textView.setText(lista.get(i).getNomeProdotto());
             //quantita
             EditText quantita = item_view.findViewById(R.id.quantita);
-            quantita.setText("...");
+            quantita.setText(lista.get(i).getQuatita());
             //add
             ImageButton add = item_view.findViewById(R.id.add);
-            add.setImageResource(addImage);
-            //delete
-            ImageButton delete = item_view.findViewById(R.id.delete);
-            delete.setImageResource(deleteImage);
 
             linearLayout.addView(item_view);
         }
@@ -94,11 +94,40 @@ public class ListaFragment extends Fragment {
 			/*
 			 	Codice di gestione aggiunta lista
 			 */
-			    System.out.println("OK");
+                showDialog();
                 break;
 
         }
         return false;
+    }
+    public void showDialog(){
+        addDialog.setContentView(R.layout.aggiunginota);
+        Button add=addDialog.findViewById(R.id.addNote);
+        Button ext=addDialog.findViewById(R.id.noNote);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    EditText nomeN=addDialog.findViewById(R.id.nomeNota);
+                    EditText nN=addDialog.findViewById(R.id.quantitaNota);
+                    String nomeNota=nomeN.getText().toString();
+                    int quantita=Integer.parseInt(nN.getText().toString());
+                    NotaLista nuovanota=new NotaLista(nomeNota,quantita);
+                    listManager.addOrUpdateRealmList(nuovanota);
+                    addDialog.dismiss();
+                }
+            }
+        });
+        ext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    addDialog.dismiss();
+                }
+            }
+        });
+
+        addDialog.show();
     }
 
 }
