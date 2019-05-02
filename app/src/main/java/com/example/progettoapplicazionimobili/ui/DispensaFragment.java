@@ -65,7 +65,7 @@ public class DispensaFragment extends Fragment {
             textProdotto.setText(prodotti.get(i).getNomeProdotto());
 
             //quantità prodotto
-            EditText etProdotto = viewDispensa.findViewById(R.id.et_prodotto);
+            TextView etProdotto = viewDispensa.findViewById(R.id.et_prodotto);
             etProdotto.setText(prodotti.get(i).getQuatita().toString());
 
             layoutDispensa.addView(viewDispensa);

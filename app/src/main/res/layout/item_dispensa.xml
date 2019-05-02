@@ -31,16 +31,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TextView"
+            android:textColor="@color/secondaryTextColor"
             android:gravity="center_vertical"
             android:textSize="20sp" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_prodotto"
             android:layout_width="62dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number" />
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/secondaryTextColor"
+            />
 
     </LinearLayout>
     <View
