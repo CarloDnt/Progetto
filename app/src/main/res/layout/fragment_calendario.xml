@@ -28,19 +28,13 @@
         app:compactCalendarTextSize="12sp" />
 
     <TextView
-        android:id="@+id/Evento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="30sp" />
-
-    <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Prodotto In Scadenza"
         android:textSize="20dp"
-        android:layout_marginBottom="@dimen/common_5_dp"
+        android:layout_marginTop="@dimen/common_25_dp"
+        android:layout_marginBottom="@dimen/common_10_dp"
         android:gravity="center"
         android:textColor="@color/primaryTextColor"/>
 
