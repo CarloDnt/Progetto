@@ -38,9 +38,10 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Prodotto In Scadenza:"
+        android:text="Prodotto In Scadenza"
         android:textSize="20dp"
         android:layout_marginBottom="@dimen/common_5_dp"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"/>
 
     <androidx.viewpager.widget.ViewPager

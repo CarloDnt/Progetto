@@ -1,5 +1,8 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.graphics.BitmapFactory;
+import android.icu.text.DateFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,19 +17,27 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.progettoapplicazionimobili.R;
 
-public class DispensaFragment extends Fragment {
+import java.util.Date;
 
+import io.realm.RealmResults;
+
+public class DispensaFragment extends Fragment {
+    private RealmResults<ProdottoDisp> prodotti;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Dispensa");
+        RealmDispensa dispManager=RealmDispensa.getRealmInstance(getContext());
+        this.prodotti=dispManager.getAllProdotti();
         return inflater.inflate(R.layout.fragment_dispensa,container,false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -35,26 +46,27 @@ public class DispensaFragment extends Fragment {
         LinearLayout layoutDispensa = getView().findViewById(R.id.dispensa);
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
 
-        for (int i = 0; i <= 20; i++){
+        for (int i = 0; i <prodotti.size(); i++){
             //layout righe dispensa
             View viewDispensa = layoutInflater.inflate(R.layout.item_dispensa, layoutDispensa, false);
             LinearLayout layout_riga_dispensa = viewDispensa.findViewById(R.id.riga_dispensa);
-            if(i%2 == 0){
-                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryDarkColor));
-            } else {
-                layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
-            }
+
+
+            layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
+
 
             //img prodotto
             ImageView imgProdotto = viewDispensa.findViewById(R.id.imgProdotto);
+            byte[] img=prodotti.get(i).getImg();
+            imgProdotto.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
 
             //nome prodotto
             TextView textProdotto = viewDispensa.findViewById(R.id.textProdotto);
-            textProdotto.setText("Nome Prodotto");
+            textProdotto.setText(prodotti.get(i).getNomeProdotto());
 
             //quantità prodotto
             EditText etProdotto = viewDispensa.findViewById(R.id.et_prodotto);
-            etProdotto.setText("...");
+            etProdotto.setText(prodotti.get(i).getQuatita().toString());
 
             layoutDispensa.addView(viewDispensa);
         }
