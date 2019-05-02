@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import android.view.*;
 import com.example.progettoapplicazionimobili.R;
@@ -32,6 +34,9 @@ public class ListaFragment extends Fragment {
     private RealmResults<NotaLista> lista;
     private Dialog addDialog;
     private RealmLista listManager;
+    private EditText nomeN;
+    private EditText nN;
+    private Fragment act;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,7 +54,6 @@ public class ListaFragment extends Fragment {
         //layout lista fragment
         LinearLayout linearLayout = getView().findViewById(R.id.gallery);
         LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-
         for (int i = 0; i <lista.size(); i++){
             //layout righe prodotti lista
             View item_view = layoutInflater.inflate(R.layout.item_list, linearLayout, false);
@@ -60,13 +64,13 @@ public class ListaFragment extends Fragment {
             textView.setText(lista.get(i).getNomeProdotto());
             //quantita
             EditText quantita = item_view.findViewById(R.id.quantita);
-            quantita.setText(lista.get(i).getQuatita());
+            quantita.setText(lista.get(i).getQuatita().toString());
             //add
             ImageButton add = item_view.findViewById(R.id.add);
 
             linearLayout.addView(item_view);
         }
-
+        act=this;
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,15 +95,16 @@ public class ListaFragment extends Fragment {
         switch(id)
         {
             case R.id.aggiungiElemento:
-			/*
-			 	Codice di gestione aggiunta lista
-			 */
-                showDialog();
+                if(getContext()!=null){
+                    addDialog=new Dialog(getContext());
+                    showDialog();
+                }
                 break;
 
         }
-        return false;
+        return true;
     }
+
     public void showDialog(){
         addDialog.setContentView(R.layout.aggiunginota);
         Button add=addDialog.findViewById(R.id.addNote);
@@ -108,13 +113,18 @@ public class ListaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(getContext()!= null){
-                    EditText nomeN=addDialog.findViewById(R.id.nomeNota);
-                    EditText nN=addDialog.findViewById(R.id.quantitaNota);
+                    nomeN=addDialog.findViewById(R.id.nomeNota);
+                    nN=addDialog.findViewById(R.id.quantitaNota);
                     String nomeNota=nomeN.getText().toString();
                     int quantita=Integer.parseInt(nN.getText().toString());
                     NotaLista nuovanota=new NotaLista(nomeNota,quantita);
                     listManager.addOrUpdateRealmList(nuovanota);
                     addDialog.dismiss();
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    if (Build.VERSION.SDK_INT >= 26) {
+                        ft.setReorderingAllowed(false);
+                    }
+                    ft.detach(act).attach(act).commit();
                 }
             }
         });
@@ -126,7 +136,6 @@ public class ListaFragment extends Fragment {
                 }
             }
         });
-
         addDialog.show();
     }
 

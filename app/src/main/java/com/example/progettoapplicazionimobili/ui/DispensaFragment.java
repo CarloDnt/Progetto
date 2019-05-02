@@ -1,5 +1,6 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.icu.text.DateFormat;
 import android.os.Build;
@@ -94,8 +95,8 @@ public class DispensaFragment extends Fragment {
         int id=item.getItemId();
         switch(id) {
             case R.id.aggiungiElemento:
-                //gestione add Element
-                System.out.println("Aggiungi elemento a dispensa");
+                Intent intent=new Intent(getContext(), AggiungiProdotto.class);
+                startActivity(intent);
                 break;
         }
         return false;

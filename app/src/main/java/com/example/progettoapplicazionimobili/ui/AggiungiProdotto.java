@@ -41,7 +41,7 @@ public class AggiungiProdotto extends AppCompatActivity {
         setTitle("Aggiungi Prodotto");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aggiungi_prodotto);
-        img= BitmapFactory.decodeResource(getResources(), R.drawable.ic_diet);
+        img= BitmapFactory.decodeResource(getResources(), R.drawable.photo);
         realmManipulatorDis=RealmDispensa.getRealmInstance(this);
         nome=(EditText)findViewById(R.id.etPNome);
         scadenza=(DatePicker)findViewById(R.id.etPScadenza);
@@ -68,7 +68,7 @@ public class AggiungiProdotto extends AppCompatActivity {
         RealmResults<ProdottoDisp> r =realm.getNomeProdotto(nome);
         if(r.size()==0) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            this.img.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            this.img.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] bitmapdata = stream.toByteArray();
             ProdottoDisp prodotto = new ProdottoDisp(nome, quantita, prezzo, scadenza,bitmapdata);
             realm.addOrUpdateRealmList(prodotto);
