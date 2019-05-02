@@ -1,11 +1,15 @@
 package com.example.progettoapplicazionimobili.ui;
 
+import android.app.Dialog;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.icu.text.DateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -36,6 +40,7 @@ public class CalendarioFragment extends Fragment {
     private RealmResults<ProdottoDisp> prodotti;
     private CompactCalendarView customCalendar;
     private TextView txtevento;
+    private Dialog devento;
     private static final String TAG = "Calendario";
 
     @Nullable
@@ -49,7 +54,7 @@ public class CalendarioFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState){
         //VIEWPAGER
         viewPager = (ViewPager) getView().findViewById(R.id.viewpager);
         customSwipe = new CustomSwipe(getContext());
@@ -63,16 +68,20 @@ public class CalendarioFragment extends Fragment {
 
         for(int i=0;i<prodotti.size();i++) {
             Long time=prodotti.get(i).getScadenza().getTime();
-            String nomeprodotto=prodotti.get(i).getNomeProdotto();
-            Event ev1 = new Event(Color.GREEN, time, nomeprodotto);
+            Event ev1 = new Event(Color.GREEN, time, i);
             customCalendar.addEvent(ev1);
         }
+        devento=new Dialog(getContext());
         customCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
                 List<Event> events = customCalendar.getEvents(dateClicked);
                 if(events.size()>0) {
-                    txtevento.setText("Scade: " + events.get(0).getData().toString());
+                    int numero=Integer.parseInt(events.get(0).getData().toString());
+                    byte[] img=prodotti.get(numero).getImg();
+                    Date scadenza=prodotti.get(numero).getScadenza();
+                    String scadenzatxt= DateFormat.getDateInstance(DateFormat.LONG).format(scadenza);
+                    showDialog(view,prodotti.get(numero).getNomeProdotto(),scadenzatxt,img);
                 }
             }
 
@@ -81,5 +90,19 @@ public class CalendarioFragment extends Fragment {
             }
         });
 
+    }
+    public void showDialog(View v,String nomep,String scadenza,byte[] img){
+        TextView nomeprodotto;
+        TextView datascadenza;
+        ImageView imgprodotto;
+        devento.setContentView(R.layout.showevento);
+        nomeprodotto=devento.findViewById(R.id.npDialog);
+        datascadenza=devento.findViewById(R.id.scaDialog);
+        imgprodotto=devento.findViewById(R.id.imgDialog);
+        nomeprodotto.setText(nomep);
+        datascadenza.setText(scadenza);
+        imgprodotto.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
+        devento.setCanceledOnTouchOutside(true);
+        devento.show();
     }
 }
