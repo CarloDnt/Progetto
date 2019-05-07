@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:elevation="@dimen/common_5_dp">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/riga_dispensa"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:orientation="horizontal"
+        android:background="@color/secondaryLightColor"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -45,6 +44,15 @@
             android:gravity="center_vertical"
             android:textColor="@color/secondaryTextColor"
             />
+        <ImageButton
+            android:id="@+id/add"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@color/secondaryColor"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
     </LinearLayout>
     <View
@@ -52,4 +60,4 @@
         android:layout_height="1dp"
         android:background="@color/secondaryDarkColor"/>
 
-</LinearLayout>
+</FrameLayout>

@@ -1,8 +1,6 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.icu.text.DateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,29 +9,29 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettoapplicazionimobili.R;
-
-import java.util.Date;
 
 import io.realm.RealmResults;
 
 public class DispensaFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
     private RealmResults<ProdottoDisp> prodotti;
+    private RealmDispensa dispManager;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Dispensa");
-        RealmDispensa dispManager=RealmDispensa.getRealmInstance(getContext());
+        this.dispManager=RealmDispensa.getRealmInstance(getContext());
         this.prodotti=dispManager.getAllProdotti();
         return inflater.inflate(R.layout.fragment_dispensa,container,false);
     }
@@ -44,33 +42,12 @@ public class DispensaFragment extends Fragment {
         setHasOptionsMenu(true);
 
         //layout dispensa fragment
-        LinearLayout layoutDispensa = getView().findViewById(R.id.dispensa);
-        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-
-        for (int i = 0; i <prodotti.size(); i++){
-            //layout righe dispensa
-            View viewDispensa = layoutInflater.inflate(R.layout.item_dispensa, layoutDispensa, false);
-            LinearLayout layout_riga_dispensa = viewDispensa.findViewById(R.id.riga_dispensa);
-
-
-            layout_riga_dispensa.setBackgroundColor(getResources().getColor(R.color.secondaryColor));
-
-
-            //img prodotto
-            ImageView imgProdotto = viewDispensa.findViewById(R.id.imgProdotto);
-            byte[] img=prodotti.get(i).getImg();
-            imgProdotto.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
-
-            //nome prodotto
-            TextView textProdotto = viewDispensa.findViewById(R.id.textProdotto);
-            textProdotto.setText(prodotti.get(i).getNomeProdotto());
-
-            //quantità prodotto
-            TextView etProdotto = viewDispensa.findViewById(R.id.et_prodotto);
-            etProdotto.setText(prodotti.get(i).getQuatita().toString());
-
-            layoutDispensa.addView(viewDispensa);
-        }
+        recyclerView = (RecyclerView) getView().findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new DispensaAdapter(prodotti,dispManager);
+        recyclerView.setAdapter(mAdapter);
     }
 
     @Override
