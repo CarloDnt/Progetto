@@ -6,8 +6,12 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
         <item name="colorAccent">@color/secondaryColor</item>
-        <!--  <item name="colorAccent">@color/primaryLightColor</item> -->
+
+        <!-- Font app -->
+        <item name="android:fontFamily">@font/robotoslabregular</item>
+
     </style>
+
     <!-- Rimuove Top Bar -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

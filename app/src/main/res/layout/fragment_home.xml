@@ -18,4 +18,14 @@
         android:clickable="true"
         android:focusable="true"
         app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <Button
+        android:id="@+id/current_date"
+        android:layout_width="184dp"
+        android:layout_height="179dp"
+        android:text="Jerry"
+        android:textSize="30sp"
+
+        />
+
 </RelativeLayout>
