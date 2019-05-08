@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -23,6 +25,7 @@ import java.util.Objects;
 public class HomeFragment extends Fragment {
     private ImageButton add;
     private Button current_date;
+    private TextView text;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,8 +60,9 @@ public class HomeFragment extends Fragment {
         ss1.setSpan(new RelativeSizeSpan(2f), 0, 2, 0);
 
         current_date = (Button) getView().findViewById(R.id.current_date);
+        text = getView().findViewById(R.id.text_date_home);
         current_date.setBackgroundResource(R.drawable.calendar_home);
-        current_date.setText(ss1);
+        text.setText(ss1);
 
 
 

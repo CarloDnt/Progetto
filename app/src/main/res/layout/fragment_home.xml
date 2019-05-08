@@ -19,13 +19,30 @@
         android:focusable="true"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
-    <Button
-        android:id="@+id/current_date"
-        android:layout_width="184dp"
-        android:layout_height="179dp"
-        android:text="Jerry"
-        android:textSize="30sp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-        />
+        <TextView
+            android:id="@+id/text_date_home"
+            android:layout_width="184dp"
+            android:layout_height="165dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="30sp"
+            android:elevation="100dp"
+            />
+
+        <Button
+            android:id="@+id/current_date"
+            android:layout_width="184dp"
+            android:layout_height="179dp"
+           />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>
