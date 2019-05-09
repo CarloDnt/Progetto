@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.progettoapplicazionimobili.R;
 
@@ -71,6 +72,15 @@ public class HomeFragment extends Fragment {
         current_date = (Button) getView().findViewById(R.id.current_date);
         text = getView().findViewById(R.id.text_date_home);
         text.setText(ss1);
+        //click on calendar
+        current_date.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_home, new CalendarioFragment()).commit();
+                }
+            }
+        });
 
         //set lista spesa button
         lista_spesa = (Button) getView().findViewById(R.id.button_lista_home);
@@ -78,13 +88,15 @@ public class HomeFragment extends Fragment {
         //lista spesa text
         anteprima_spesa = getView().findViewById(R.id.anteprima_lista_home);
         anteprima_spesa.setText(""+note.size());
-
-
-
-
-
-
-
-
+        //click on shopping cart
+        anteprima_spesa.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    getFragmentManager().beginTransaction().replace(R.id.fragment_home, new ListaFragment()).commit();
+                }
+            }
+        });
     } //end onViewCreated
+
 }
