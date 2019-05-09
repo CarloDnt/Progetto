@@ -22,13 +22,23 @@ import java.util.Date;
 
 import java.util.Objects;
 
+import io.realm.RealmResults;
+
 public class HomeFragment extends Fragment {
     private ImageButton add;
     private Button current_date;
     private TextView text;
+    private Button lista_spesa;
+    private TextView anteprima_spesa;
+
+    private RealmResults <NotaLista> note;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        RealmLista manager = RealmLista.getRealmInstance(getContext());
+        note=manager.getAllNotes();
         return inflater.inflate(R.layout.fragment_home,container,false);
     }
 
@@ -47,7 +57,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
         //Set current date
         Date date = new Date();
         SimpleDateFormat format_day = new SimpleDateFormat("dd");
@@ -61,8 +70,15 @@ public class HomeFragment extends Fragment {
 
         current_date = (Button) getView().findViewById(R.id.current_date);
         text = getView().findViewById(R.id.text_date_home);
-        current_date.setBackgroundResource(R.drawable.calendar_home);
         text.setText(ss1);
+
+        //set lista spesa button
+        lista_spesa = (Button) getView().findViewById(R.id.button_lista_home);
+
+        //lista spesa text
+        anteprima_spesa = getView().findViewById(R.id.anteprima_lista_home);
+        anteprima_spesa.setText(""+note.size());
+
 
 
 

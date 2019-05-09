@@ -19,29 +19,95 @@
         android:focusable="true"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
+    <!--RELATIVE LAYOUT CALENDARIO-->
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_width="200.5dp"
+        android:layout_height="200.5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:background="@drawable/button_border">
+
 
         <TextView
             android:id="@+id/text_date_home"
-            android:layout_width="184dp"
-            android:layout_height="165dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:elevation="100dp"
             android:gravity="center"
             android:text="TextView"
             android:textColor="@color/secondaryTextColor"
-            android:textSize="30sp"
-            android:elevation="100dp"
-            />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/current_date"
-            android:layout_width="184dp"
-            android:layout_height="179dp"
-           />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/calendar_home"
+            android:scaleY="0.9"
+            android:scaleX="0.9"/>
 
+    </RelativeLayout>
+
+    <!--RELATIVE LAYOUT LISTA SPESA-->
+    <RelativeLayout
+        android:layout_width="200.5dp"
+        android:layout_height="200.5dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:background="@drawable/button_border">
+
+        <TextView
+            android:id="@+id/anteprima_lista_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-16dp"
+            android:layout_marginLeft="25dp"
+            android:elevation="100dp"
+            android:gravity="center"
+            android:text="15"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="60dp"/>
+
+        <Button
+            android:id="@+id/button_lista_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_shopping_cart"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            />
+
+    </RelativeLayout>
+
+
+    <!--RELATIVE LAYOUT DISPENSA-->
+    <RelativeLayout
+        android:layout_width="401dp"
+        android:layout_height="420dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="210dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/anteprima_dispensa_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:elevation="100dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button_dispensa_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
 
