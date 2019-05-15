@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ import io.realm.RealmResults;
 
 public class DispensaFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private DispensaAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private RealmResults<ProdottoDisp> prodotti;
     private RealmDispensa dispManager;
@@ -46,8 +47,11 @@ public class DispensaFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new DispensaAdapter(prodotti,dispManager);
+        mAdapter = new DispensaAdapter(prodotti,dispManager,getContext());
         recyclerView.setAdapter(mAdapter);
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new DispSwipeToDelete(mAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     @Override

@@ -1,26 +1,22 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettoapplicazionimobili.R;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.RealmResults;
 
-public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyViewHolder> {
-    private RealmResults<ProdottoDisp> mDataset;
-    private RealmDispensa dispManager;
+public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder> {
+    private RealmResults<NotaLista> mDataset;
+    private RealmLista dispManager;
     private Context cxt;
 
     public Context getContext() {
@@ -32,21 +28,17 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public LinearLayout foreground;
-        public CircleImageView immagineprodotto;
         public TextView quantitaprodotto;
         public TextView nomeprodotto;
         public MyViewHolder(View v) {
             super(v);
-            nomeprodotto=v.findViewById(R.id.textProdotto);
-            quantitaprodotto=v.findViewById(R.id.et_prodotto);
-            immagineprodotto=v.findViewById(R.id.imgProdotto);
-            foreground=v.findViewById(R.id.riga_dispensa);
+            nomeprodotto=v.findViewById(R.id.text_list);
+            quantitaprodotto=v.findViewById(R.id.quantita);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public DispensaAdapter(RealmResults<ProdottoDisp> myDataset,RealmDispensa dispManagert,Context cxt) {
+    public ListaAdapter(RealmResults<NotaLista> myDataset,RealmLista dispManagert,Context cxt) {
         mDataset = myDataset;
         dispManager=dispManagert;
         this.cxt=cxt;
@@ -54,11 +46,11 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
 
     // Create new views (invoked by the layout manager)
     @Override
-    public DispensaAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public ListaAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                           int viewType) {
         // create a new view
         View v = (View) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_dispensa, parent, false);
+                .inflate(R.layout.item_list, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
@@ -67,11 +59,6 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
-        //img prodotto
-        byte[] img = mDataset.get(position).getImg();
-        Bitmap immagine= BitmapFactory.decodeByteArray(img, 0, img.length);
-        holder.immagineprodotto.setImageBitmap(immagine);
 
         //nome prodotto
         String nomep=mDataset.get(position).getNomeProdotto();
@@ -87,9 +74,10 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
     public int getItemCount() {
         return mDataset.size();
     }
+
     public void removeItem(int position) {
-        dispManager.deleteProdotto(mDataset.get(position));
-        mDataset=dispManager.getAllProdotti();
+        dispManager.deleteNote(mDataset.get(position));
+        mDataset=dispManager.getAllNotes();
         // notify the item removed by position
         // to perform recycler view delete animations
         // NOTE: don't call notifyDataSetChanged()
