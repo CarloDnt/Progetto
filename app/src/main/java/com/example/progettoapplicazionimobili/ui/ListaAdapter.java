@@ -2,6 +2,7 @@ package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettoapplicazionimobili.R;
+import com.google.android.material.snackbar.Snackbar;
 
 import io.realm.RealmResults;
 
@@ -78,9 +80,8 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder
     public void removeItem(int position) {
         dispManager.deleteNote(mDataset.get(position));
         mDataset=dispManager.getAllNotes();
-        // notify the item removed by position
-        // to perform recycler view delete animations
-        // NOTE: don't call notifyDataSetChanged()
+
         notifyItemRemoved(position);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -42,7 +43,17 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
             quantitaprodotto=v.findViewById(R.id.et_prodotto);
             immagineprodotto=v.findViewById(R.id.imgProdotto);
             foreground=v.findViewById(R.id.riga_dispensa);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, AggiungiProdotto.class);
+                    context.startActivity(intent);
+                }
+            });
+
         }
+
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
