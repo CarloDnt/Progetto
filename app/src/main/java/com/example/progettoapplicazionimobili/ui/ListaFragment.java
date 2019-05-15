@@ -2,9 +2,6 @@ package com.example.progettoapplicazionimobili.ui;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.*;
 import com.example.progettoapplicazionimobili.R;
-
-import org.w3c.dom.Text;
 
 import io.realm.RealmResults;
 
@@ -37,6 +31,9 @@ public class ListaFragment extends Fragment {
     private EditText nomeN;
     private EditText nN;
     private Fragment act;
+    private RecyclerView recyclerView;
+    private ListaAdapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,24 +49,15 @@ public class ListaFragment extends Fragment {
         setHasOptionsMenu(true);
 
         //layout lista fragment
-        LinearLayout linearLayout = getView().findViewById(R.id.gallery);
-        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
-        for (int i = 0; i <lista.size(); i++){
-            //layout righe prodotti lista
-            View item_view = layoutInflater.inflate(R.layout.item_list, linearLayout, false);
-            LinearLayout llayout = item_view.findViewById(R.id.linear_layout);
-            llayout.setBackgroundColor(getResources().getColor(R.color.secondaryLightColor));
-            //text
-            TextView textView = item_view.findViewById(R.id.text);
-            textView.setText(lista.get(i).getNomeProdotto());
-            //quantita
-            EditText quantita = item_view.findViewById(R.id.quantita);
-            quantita.setText(lista.get(i).getQuatita().toString());
-            //add
-            ImageButton add = item_view.findViewById(R.id.add);
-
-            linearLayout.addView(item_view);
-        }
+        recyclerView = (RecyclerView) getView().findViewById(R.id.my_recycler_view_list);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        mAdapter = new ListaAdapter(lista,listManager,getContext());
+        recyclerView.setAdapter(mAdapter);
+        ItemTouchHelper itemTouchHelper = new
+                ItemTouchHelper(new ListSwipeToDelete(mAdapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
         act=this;
     }
     @Override

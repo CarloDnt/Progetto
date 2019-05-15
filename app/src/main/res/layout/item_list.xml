@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/linear_layout"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="71dp"
-    android:elevation="@dimen/common_15_dp"
-    >
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:background="@color/secondaryLightColor"
         >
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/text_list"
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
@@ -32,7 +30,7 @@
             android:ems="10"
             android:inputType="number"
             android:textColor="@color/secondaryTextColor"
-            app:layout_constraintStart_toEndOf="@+id/text" />
+            app:layout_constraintStart_toEndOf="@+id/text_list" />
 
         <ImageButton
             android:id="@+id/add"
@@ -50,4 +48,4 @@
         android:layout_height="1dp"
         android:background="@color/secondaryDarkColor"/>
 
-</LinearLayout>
+</FrameLayout>
