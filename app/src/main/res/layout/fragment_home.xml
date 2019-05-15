@@ -17,7 +17,6 @@
         android:gravity="center"
         android:background="@drawable/button_border">
 
-
         <TextView
             android:id="@+id/text_date_home"
             android:layout_width="match_parent"
@@ -80,24 +79,24 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="212dp"
-        android:gravity="center"
-        android:background="@drawable/button_border">
+        android:gravity="center">
 
-        <TextView
-            android:id="@+id/anteprima_dispensa_home"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:elevation="100dp"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="30sp" />
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="@color/primaryLightColor"
+            android:backgroundTint="@color/primaryLightColor" />
 
-        <Button
-            android:id="@+id/button_dispensa_home"
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/indicator_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="50dp"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/primaryColor"
+            />
 
     </RelativeLayout>
 
@@ -107,8 +106,7 @@
         android:layout_width="401dp"
         android:layout_height="70dp"
         android:layout_marginTop="470dp"
-        android:layout_marginLeft="5dp"
-        android:background="@drawable/button_border">
+        android:layout_marginLeft="5dp">
 
         <ImageButton
             android:id="@+id/add"
