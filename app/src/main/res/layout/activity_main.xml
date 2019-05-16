@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryLightColor"
-    android:backgroundTint="@color/primaryLightColor"
+    android:backgroundTint="@color/secondaryColor"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".ui.MainActivity">
@@ -24,7 +24,7 @@
         android:fontFamily="casual"
         android:gravity="center"
         android:text="FOOD TRACKER"
-        android:textColor="@color/primaryTextColor"
+        android:textColor="@color/primaryLightColor"
         android:textSize="36sp"
         android:textStyle="bold"
          />
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_30_dp"
-        android:backgroundTint="@color/secondaryColor"
+        android:backgroundTint="@color/primaryLightColor"
         android:text="@string/login" />
 
     <TextView

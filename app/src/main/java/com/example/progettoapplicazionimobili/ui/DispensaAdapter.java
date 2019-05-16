@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettoapplicazionimobili.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.RealmResults;
@@ -43,15 +44,6 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
             quantitaprodotto=v.findViewById(R.id.et_prodotto);
             immagineprodotto=v.findViewById(R.id.imgProdotto);
             foreground=v.findViewById(R.id.riga_dispensa);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Context context = v.getContext();
-                    Intent intent = new Intent(context, AggiungiProdotto.class);
-                    context.startActivity(intent);
-                }
-            });
-
         }
 
     }
@@ -77,7 +69,7 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
         //img prodotto
         byte[] img = mDataset.get(position).getImg();
@@ -87,6 +79,17 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
         //nome prodotto
         String nomep=mDataset.get(position).getNomeProdotto();
         holder.nomeprodotto.setText(nomep);
+
+        holder.foreground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    Intent intent=new Intent(getContext(), InfoProdotto.class);
+                    intent.putExtra("indirizzo", position);
+                    cxt.startActivity(intent);
+                }
+            }
+        });
 
         //quantità prodotto
         String quantitap= mDataset.get(position).getQuatita().toString();

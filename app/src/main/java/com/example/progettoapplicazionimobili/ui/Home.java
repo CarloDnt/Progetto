@@ -23,8 +23,11 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
-
+        if (getIntent().getExtras() != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ListaFragment()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

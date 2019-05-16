@@ -22,7 +22,7 @@ public class ListSwipeToDelete extends ItemTouchHelper.SimpleCallback {
     private ColorDrawable background;
 
     public ListSwipeToDelete(ListaAdapter adapter) {
-        super(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        super(0,ItemTouchHelper.LEFT);
         mAdapter = adapter;
         icon = ContextCompat.getDrawable(mAdapter.getContext(),
                 R.drawable.ic_close_black_24dp);

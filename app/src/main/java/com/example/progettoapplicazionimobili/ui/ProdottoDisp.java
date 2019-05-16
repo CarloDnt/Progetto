@@ -33,7 +33,7 @@ public class ProdottoDisp extends RealmObject implements Parcelable {
         this.quatita = quatita;
     }
 
-    public int getPrezzo() {
+    public Integer getPrezzo() {
         return prezzo;
     }
 

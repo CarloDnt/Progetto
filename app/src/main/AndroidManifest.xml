@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.AggiungiProdotto" />
+        <activity android:name=".ui.InfoProdotto" />
         <activity android:name=".ui.Registrazione" />
         <activity
             android:name=".ui.Home"

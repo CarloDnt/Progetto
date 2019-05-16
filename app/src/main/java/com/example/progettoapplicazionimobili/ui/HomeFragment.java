@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //anteprima dispnesa
+        //anteprima dispensa
         //VIEWPAGER
         viewPager = (ViewPager) getView().findViewById(R.id.viewpager_home);
         customSwipe = new CustomSwipe(getContext());
