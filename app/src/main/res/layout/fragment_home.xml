@@ -46,7 +46,8 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:background="@drawable/button_border">
+        android:background="@drawable/roundbutton"
+        android:backgroundTint="@color/primaryDarkColor">
 
         <TextView
             android:id="@+id/anteprima_lista_home"
@@ -112,6 +113,7 @@
             android:id="@+id/add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/roundedrectangle2"
             android:backgroundTint="@color/secondaryColor"
             android:clickable="true"
             android:focusable="true"
