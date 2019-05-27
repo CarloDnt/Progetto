@@ -4,18 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor"
-    android:backgroundTint="@color/secondaryColor"
+    android:background="@drawable/login_background"
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".ui.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="336dp"
-        android:layout_height="328dp"
-        android:layout_marginBottom="@dimen/common_15_dp"
-        app:srcCompat="@drawable/ic_refrigerator" />
+
 
     <TextView
         android:id="@+id/titolo"
@@ -23,11 +17,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="casual"
         android:gravity="center"
-        android:text="FOOD TRACKER"
-        android:textColor="@color/primaryLightColor"
-        android:textSize="36sp"
-        android:textStyle="bold"
-         />
+        android:text="FOOD
+
+        TRACKER"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/etUsername"
@@ -61,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_30_dp"
         android:backgroundTint="@color/primaryLightColor"
+        android:background="@drawable/roundbutton"
         android:text="@string/login" />
 
     <TextView
