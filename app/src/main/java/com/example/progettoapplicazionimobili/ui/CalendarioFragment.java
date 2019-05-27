@@ -26,7 +26,6 @@ import com.example.progettoapplicazionimobili.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 
-
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;

@@ -9,12 +9,6 @@
 
         <!-- Style app -->
         <item name="android:fontFamily">@font/member</item>
-        <item name="android:actionBarStyle">@style/StyleTopBar</item>
-    </style>
-
-    <!-- Style Action Bar-->
-    <style name="StyleTopBar">
-        <item name="android:centerX">true</item>
     </style>
 
     <!-- Rimuove Top Bar -->
