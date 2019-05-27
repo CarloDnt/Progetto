@@ -24,6 +24,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.progettoapplicazionimobili.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
@@ -135,5 +136,6 @@ public class HomeFragment extends Fragment {
         devento=new Dialog(getContext());
 
     } //end onViewCreated
+
 
 }
