@@ -11,10 +11,11 @@
     <TextView
         android:id="@+id/calendarmonth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Giugno 2019"
         android:textSize="30dp"
         android:layout_marginBottom="@dimen/common_10_dp"
+        android:layout_marginTop="@dimen/common_10_dp"
         android:gravity="center"
         android:textColor="@color/primaryTextColor"
         android:background="@color/primaryColor"/>

@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="400dp"
-    android:layout_height="245dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@color/secondaryColor"
-    android:backgroundTint="@color/secondaryColor"
+    android:background="@drawable/roundedrectangle"
+    android:backgroundTint="@color/primaryColor"
     android:elevation="@dimen/common_30_dp"
+    android:gravity="center"
     android:orientation="vertical">
 
     <LinearLayout
@@ -20,13 +21,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Aggiungi Nuova Nota"
+            android:textSize="20dp"
             android:textColor="@color/secondaryTextColor" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/npDialog"
@@ -40,7 +43,7 @@
 
         <EditText
             android:id="@+id/nomeNota"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="text" />
@@ -51,13 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_10_dp"
             android:gravity="center"
-            android:text="Quantità"
+            android:text="Quantita'"
             android:textColor="@color/secondaryTextColor"
             android:textSize="@dimen/common_20_dp" />
 
         <EditText
             android:id="@+id/quantitaNota"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="number" />
@@ -76,7 +79,8 @@
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:background="@color/secondaryDarkColor"
-            android:text="annulla"
+            android:text="Annulla"
+            android:textSize="@dimen/common_20_dp"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -86,6 +90,7 @@
             android:layout_marginEnd="8dp"
             android:background="@color/secondaryDarkColor"
             android:text="Accetta"
+            android:textSize="@dimen/common_20_dp"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
