@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
     android:orientation="vertical"
-    tools:context=".ui.AggiungiProdotto">
+    tools:context=".ui.AggiungiProdotto"
+    >
 
 
     <ImageButton
@@ -24,15 +25,18 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_10_dp"
+        android:alpha="0.7"
         android:text="Nome Prodotto"
-        android:textColor="@color/primaryTextColor" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/common_25_dp" />
 
     <EditText
         android:id="@+id/etPNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primaryLightColor"
-        android:ems="10"
+        android:ems="15"
         android:inputType="textPersonName"
         android:textColor="@color/primaryTextColor"
         android:textColorHighlight="@color/primaryTextColor"
@@ -42,8 +46,11 @@
         android:id="@+id/text1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_10_dp"
+        android:alpha="0.7"
         android:text="Data di Scadenza"
-        android:textColor="@color/primaryTextColor" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/common_25_dp" />
 
     <DatePicker
         android:id="@+id/etPScadenza"
@@ -63,8 +70,11 @@
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_10_dp"
+        android:alpha="0.7"
         android:text="Prezzo"
-        android:textColor="@color/primaryTextColor" />
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/common_25_dp" />
 
     <EditText
         android:id="@+id/etPPrezzo"
@@ -80,8 +90,11 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quantità"
-        android:textColor="@color/primaryTextColor" />
+        android:layout_marginLeft="@dimen/common_10_dp"
+        android:alpha="0.7"
+        android:text="Quantita'"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/common_25_dp" />
 
     <EditText
         android:id="@+id/etPQuantita"
@@ -97,8 +110,11 @@
         android:id="@+id/addPro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secondaryColor"
+        android:background="@drawable/roundedrectangle2"
+        android:backgroundTint="@color/secondaryColor"
+        android:gravity="center"
         android:text="DONE"
-        android:textColor="@color/secondaryTextColor" />
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/common_25_dp" />
 
 </LinearLayout>

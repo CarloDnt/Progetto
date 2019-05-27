@@ -9,7 +9,9 @@
 
         <!-- Style app -->
         <item name="android:fontFamily">@font/member</item>
+
     </style>
+
 
     <!-- Rimuove Top Bar -->
     <style name="AppTheme.NoActionBar">

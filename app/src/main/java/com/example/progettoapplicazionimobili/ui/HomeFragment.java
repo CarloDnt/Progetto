@@ -32,6 +32,7 @@ import java.util.Date;
 
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.RealmResults;
 import me.relex.circleindicator.CircleIndicator;
 
@@ -105,7 +106,7 @@ public class HomeFragment extends Fragment {
         });
 
         //set lista spesa button
-        lista_spesa = (Button) getView().findViewById(R.id.button_lista_home);
+        lista_spesa = getView().findViewById(R.id.button_lista_home);
 
         //lista spesa text
         anteprima_spesa = getView().findViewById(R.id.anteprima_lista_home);

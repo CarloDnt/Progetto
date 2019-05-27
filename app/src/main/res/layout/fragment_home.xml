@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor"
+    android:background="@drawable/gatto"
     android:orientation="vertical"
-    android:id="@+id/fragment_home">
+    android:id="@+id/fragment_home"
+    >
 
     <!--RELATIVE LAYOUT CALENDARIO-->
     <RelativeLayout
@@ -15,7 +16,9 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:background="@drawable/button_border">
+        android:background="@drawable/roundedrectangle"
+        android:backgroundTint="@color/primaryDarkColor"
+        >
 
         <TextView
             android:id="@+id/text_date_home"
@@ -46,7 +49,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
-        android:background="@drawable/roundbutton"
+        android:background="@drawable/roundedrectangle"
         android:backgroundTint="@color/primaryDarkColor">
 
         <TextView
@@ -80,7 +83,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="212dp"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_home"
@@ -88,15 +92,18 @@
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:background="@color/primaryLightColor"
-            android:backgroundTint="@color/primaryLightColor" />
+            />
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/indicator_home"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="200dp"
-            android:backgroundTint="@color/primaryColor"
+            app:ci_height="7dp"
+            app:ci_width="7dp"
+            app:ci_drawable="@drawable/rounditem"
+            app:ci_drawable_unselected="@drawable/rounditem2"
+            android:gravity="center"
             />
 
     </RelativeLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/twProdottoScad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor"
+    android:background="@drawable/gatto"
     android:orientation="vertical">
 
     <TextView
@@ -24,7 +24,7 @@
     <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/compactcalendar_view"
         android:layout_width="fill_parent"
-        android:layout_height="274dp"
+        android:layout_height="230dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:compactCalendarBackgroundColor="@color/primaryColor"
@@ -53,16 +53,21 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
-        android:background="@color/primaryLightColor"
-        android:backgroundTint="@color/primaryLightColor" />
+
+        />
 
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:backgroundTint="@color/primaryColor"
+        android:backgroundTint="@color/secondaryColor"
+        app:ci_height="7dp"
+        app:ci_width="7dp"
+        app:ci_drawable="@drawable/rounditem"
+        app:ci_drawable_unselected="@drawable/rounditem2"
+        android:gravity="center"
         />
 
 

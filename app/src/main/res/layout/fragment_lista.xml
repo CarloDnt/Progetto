@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor"
+    android:background="@drawable/gatto"
     android:orientation="vertical"
     android:id="@+id/fragment_lista">
 
@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        android:background="@color/primaryLightColor"
-        android:backgroundTint="@color/primaryLightColor"/>
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
