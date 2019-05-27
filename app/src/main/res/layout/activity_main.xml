@@ -9,19 +9,27 @@
     android:gravity="center"
     tools:context=".ui.MainActivity">
 
-
-
     <TextView
         android:id="@+id/titolo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="casual"
+        android:fontFamily="@font/member"
         android:gravity="center"
         android:text="FOOD
-
         TRACKER"
         android:textColor="@color/primaryTextColor"
-        android:textSize="50sp"
+        android:textSize="70sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sottotitolo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/member"
+        android:gravity="center"
+        android:text="La tua dispensa a portata di mano"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <EditText
@@ -31,6 +39,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"
         android:autofillHints="Username"
         android:backgroundTint="@color/primaryTextColor"
         android:ems="10"
@@ -52,11 +61,11 @@
 
     <Button
         android:id="@+id/btLogin"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/common_30_dp"
         android:backgroundTint="@color/primaryLightColor"
-        android:background="@drawable/roundbutton"
+        android:background="@drawable/roundedrectangle"
         android:text="@string/login" />
 
     <TextView
