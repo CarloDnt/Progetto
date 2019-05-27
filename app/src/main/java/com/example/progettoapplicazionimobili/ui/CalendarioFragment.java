@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -26,11 +29,13 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import io.realm.RealmResults;
 import me.relex.circleindicator.CircleIndicator;
 
 
+@RequiresApi(api = Build.VERSION_CODES.N)
 public class CalendarioFragment extends Fragment {
 
     //VIEWPAGER
@@ -41,6 +46,8 @@ public class CalendarioFragment extends Fragment {
     private CompactCalendarView customCalendar;
     private Dialog devento;
     private static final String TAG = "Calendario";
+    private SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM yyyy" , Locale.getDefault());
+    private TextView toolbar;
 
     @Nullable
     @Override
@@ -63,6 +70,8 @@ public class CalendarioFragment extends Fragment {
         indicator.setViewPager(viewPager);
 
         customCalendar = (CompactCalendarView) getView().findViewById(R.id.compactcalendar_view);
+        toolbar=getView().findViewById(R.id.calendarmonth);
+        toolbar.setText(dateFormatForMonth.format(customCalendar.getFirstDayOfCurrentMonth()));
 
         for(int i=0;i<prodotti.size();i++) {
             Long time=prodotti.get(i).getScadenza().getTime();
@@ -85,6 +94,7 @@ public class CalendarioFragment extends Fragment {
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
+                toolbar.setText(dateFormatForMonth.format(customCalendar.getFirstDayOfCurrentMonth()));
             }
         });
 
