@@ -53,6 +53,8 @@ public class AggiungiProdotto extends AppCompatActivity {
             public void onClick(View v) {
                 aggiungiProdotto(nome.getText().toString(),getDateFromDatePicker(scadenza)
                         ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),add.getBackground(),realmManipulatorDis);
+                Intent intent=new Intent(v.getContext(), Home.class);
+                startActivity(intent);
             }
         });
 
