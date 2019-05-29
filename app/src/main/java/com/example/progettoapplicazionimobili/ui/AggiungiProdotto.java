@@ -21,6 +21,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.realm.RealmResults;
 
 
@@ -31,7 +32,7 @@ public class AggiungiProdotto extends AppCompatActivity {
     private EditText quantita;
     private EditText prezzo;
     private Button add;
-    private ImageButton camera;
+    private CircleImageView camera;
     private Bitmap img;
     private RealmDispensa realmManipulatorDis;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -51,8 +52,10 @@ public class AggiungiProdotto extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                aggiungiProdotto(nome.getText().toString(),getDateFromDatePicker(scadenza)
-                        ,Integer.parseInt(quantita.getText().toString()),Integer.parseInt(prezzo.getText().toString()),add.getBackground(),realmManipulatorDis);
+                if (!quantita.getText().toString().equals("")) {
+                    aggiungiProdotto(nome.getText().toString(), getDateFromDatePicker(scadenza)
+                            , Integer.parseInt(quantita.getText().toString()), Integer.parseInt(prezzo.getText().toString()), add.getBackground(), realmManipulatorDis);
+                }
                 Intent intent=new Intent(v.getContext(), Home.class);
                 startActivity(intent);
             }
@@ -68,7 +71,7 @@ public class AggiungiProdotto extends AppCompatActivity {
     }
     public void aggiungiProdotto(String nome, Date scadenza,Integer quantita,Integer prezzo,Drawable img,RealmDispensa realm){
         RealmResults<ProdottoDisp> r =realm.getNomeProdotto(nome);
-        if(r.size()==0) {
+        if(r.size()==0 ) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             this.img.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] bitmapdata = stream.toByteArray();
@@ -103,7 +106,7 @@ public class AggiungiProdotto extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             this.img=imageBitmap;
-            ImageButton a=findViewById(R.id.camera);
+            CircleImageView a=findViewById(R.id.camera);
             a.setImageBitmap(imageBitmap);
         }
     }

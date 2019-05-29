@@ -47,7 +47,7 @@
         android:animateLayoutChanges="false"
         android:background="@color/primaryDarkColor"
         android:focusableInTouchMode="false"
-        app:itemIconTint="@color/primaryTextColor"
-        app:itemTextColor="@color/primaryTextColor"
+        app:itemIconTint="@color/secondaryDarkColor"
+        app:itemTextColor="@color/secondaryDarkColor"
         app:menu="@menu/bottom_nav_menu" />
 </RelativeLayout>

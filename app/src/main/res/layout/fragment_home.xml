@@ -121,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/roundedrectangle2"
-            android:backgroundTint="@color/secondaryColor"
+            android:backgroundTint="@color/primaryLightColor"
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@drawable/ic_add_black_24dp" />
