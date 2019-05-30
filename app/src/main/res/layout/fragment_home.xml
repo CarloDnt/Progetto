@@ -17,7 +17,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:background="@drawable/roundedrectangle"
-        android:backgroundTint="@color/primaryDarkColor"
+        android:backgroundTint="@color/primaryColor"
         >
 
         <TextView
@@ -50,7 +50,7 @@
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:background="@drawable/roundedrectangle"
-        android:backgroundTint="@color/primaryDarkColor">
+        android:backgroundTint="@color/primaryColor">
 
         <TextView
             android:id="@+id/anteprima_lista_home"
