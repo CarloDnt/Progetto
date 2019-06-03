@@ -63,17 +63,9 @@ public class InfoProdotto extends AppCompatActivity {
         byte[] img=prodotti.get(indirizzo).getImg();
         immagineProdotto.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
 
+
         nomeProdotto = findViewById(R.id.info_nome);
         nomeProdotto.setText(prodotti.get(indirizzo).getNomeProdotto());
-
-        quantità = findViewById(R.id.text_quantità);
-        quantità.setText("Quantità: ");
-
-        scadenza = findViewById(R.id.text_scadenza);
-        scadenza.setText("Scadenza: ");
-
-        prezzo = findViewById(R.id.text_prezzo);
-        prezzo.setText("Prezzo: ");
 
         info_quantità = findViewById(R.id.info_quantità);
         info_quantità.setText(prodotti.get(indirizzo).getQuatita().toString());

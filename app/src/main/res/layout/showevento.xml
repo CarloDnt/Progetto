@@ -7,11 +7,13 @@
     android:background="@drawable/roundedrectangle"
     android:backgroundTint="@color/primaryColor"
     android:elevation="@dimen/common_30_dp"
+
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_40_dp"
-        android:background="@color/secondaryDarkColor"
+        android:background="@drawable/roundedrectangle"
+        android:backgroundTint="@color/secondaryColor"
         android:orientation="horizontal"
         android:gravity="center"
         >

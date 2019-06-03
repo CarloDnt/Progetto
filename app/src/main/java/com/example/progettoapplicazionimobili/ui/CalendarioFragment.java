@@ -3,6 +3,7 @@ package com.example.progettoapplicazionimobili.ui;
 import android.app.Dialog;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.icu.text.DateFormat;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
@@ -78,6 +79,7 @@ public class CalendarioFragment extends Fragment {
             customCalendar.addEvent(ev1);
         }
         devento=new Dialog(getContext());
+        devento.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         customCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {

@@ -2,6 +2,8 @@ package com.example.progettoapplicazionimobili.ui;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -85,6 +87,8 @@ public class ListaFragment extends Fragment {
             case R.id.aggiungiElemento:
                 if(getContext()!=null){
                     addDialog=new Dialog(getContext());
+                    addDialog=new Dialog(getContext());
+                    addDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     showDialog();
                 }
                 break;

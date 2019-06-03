@@ -10,20 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:orientation="horizontal"
-        android:background="@color/secondaryLightColor"
+        android:background="@color/primaryColor"
+        android:backgroundTint="@color/primaryColor"
+        android:backgroundTintMode="multiply"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/imgProdotto"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/common_15_dp"
-            android:layout_marginBottom="@dimen/common_15_dp"
+            android:layout_marginTop="@dimen/common_10_dp"
+            android:layout_marginBottom="@dimen/common_10_dp"
             android:layout_weight="0"
             android:scaleType="centerCrop"
             android:src="@drawable/photo"
-            app:civ_border_color="#00000000"
-            app:civ_border_width="1dp" />
+            app:civ_border_color="@color/secondaryColor"
+            app:civ_border_width="2dp" />
 
         <TextView
             android:id="@+id/textProdotto"
