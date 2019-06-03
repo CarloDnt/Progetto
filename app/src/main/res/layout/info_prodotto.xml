@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/info_prodotto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor">
+    android:background="@drawable/gatto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/info_foto"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/info_nome"
-            app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/photo"
             app:civ_border_color="#00000000"
-            app:civ_border_width="1dp"/>
+            app:civ_border_width="1dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp" />
 
         <TextView
             android:id="@+id/info_nome"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:textSize="40sp"
             android:textColor="@color/primaryTextColor"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/info_foto" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -140,10 +141,12 @@
             android:id="@+id/info_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/secondaryColor"
+            android:background="@drawable/roundedrectangle2"
+            android:backgroundTint="@color/primaryLightColor"
             android:clickable="true"
             android:focusable="true"
             android:text="Aggiungi a Lista Spesa"
+            android:textColor="@color/secondaryTextColor"
             android:textSize="20sp">
         </Button>
     </LinearLayout>

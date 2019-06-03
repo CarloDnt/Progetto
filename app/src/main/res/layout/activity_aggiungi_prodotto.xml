@@ -23,35 +23,21 @@
         app:civ_border_width="4dp" />
 
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginTop="@dimen/common_15_dp"
-        android:layout_marginLeft="@dimen/common_10_dp"
-        android:alpha="0.7"
-        android:text="Nome Prodotto"
-        android:gravity="center_vertical"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/common_20_dp" />
-
     <EditText
         android:id="@+id/etPNome"
-        android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:background="#C48D8D8D"
-        android:backgroundTint="@color/primaryLightColor"
-        android:ems="20"
+        android:layout_height="wrap_content"
+        android:autofillHints="Nome Prodotto"
+        android:layout_marginTop="@dimen/common_20_dp"
+        android:backgroundTint="@color/primaryTextColor"
+        android:ems="10"
+        android:hint="Nome del Prodotto"
         android:inputType="textPersonName"
         android:textColor="@color/primaryTextColor"
-        android:textColorHighlight="@color/primaryTextColor"
-        android:textColorLink="@color/primaryTextColor" />
-    <View
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:background="@color/secondaryColor"/>
+        />
+
+
 
     <TextView
         android:id="@+id/text1"
@@ -61,7 +47,8 @@
         android:alpha="0.7"
         android:text="Data di Scadenza"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/common_20_dp" />
+        android:ems="10"
+        android:gravity="center"/>
 
     <DatePicker
         android:id="@+id/etPScadenza"
@@ -77,61 +64,34 @@
         android:inputType="date"
         android:yearListSelectorColor="@color/primaryTextColor" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginLeft="@dimen/common_10_dp"
-        android:alpha="0.7"
-        android:text="Prezzo"
-        android:gravity="center_vertical"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/common_20_dp" />
 
     <EditText
         android:id="@+id/etPPrezzo"
-        android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:background="#C48D8D8D"
-        android:backgroundTint="@color/primaryLightColor"
-        android:ems="20"
-        android:inputType="numberDecimal"
+        android:layout_height="wrap_content"
+        android:autofillHints="10"
+        android:layout_marginTop="@dimen/common_20_dp"
+        android:backgroundTint="@color/primaryTextColor"
+        android:ems="10"
+        android:hint="Prezzo del Prodotto"
+        android:inputType="textPersonName"
         android:textColor="@color/primaryTextColor"
-        android:textColorHighlight="@color/primaryTextColor" />
-    <View
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:background="@color/secondaryColor"/>
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginLeft="@dimen/common_10_dp"
-        android:alpha="0.7"
-        android:text="Quantita'"
-        android:gravity="center_vertical"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/common_20_dp" />
+        />
 
     <EditText
         android:id="@+id/etPQuantita"
-        android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="30dp"
-        android:background="#C48D8D8D"
-        android:backgroundTint="@color/primaryLightColor"
-        android:ems="20"
-        android:inputType="number"
+        android:layout_height="wrap_content"
+        android:autofillHints="10"
+        android:layout_marginTop="@dimen/common_20_dp"
+        android:backgroundTint="@color/primaryTextColor"
+        android:ems="10"
+        android:hint="Quantita' del Prodotto"
+        android:inputType="textPersonName"
         android:textColor="@color/primaryTextColor"
-        android:textColorHighlight="@color/primaryTextColor" />
-    <View
         android:layout_gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="2dp"
-        android:background="@color/secondaryColor"/>
+        />
 
     <Button
         android:id="@+id/addPro"
