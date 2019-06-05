@@ -7,12 +7,17 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,6 +57,8 @@ public class DispensaFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new
                 ItemTouchHelper(new DispSwipeToDelete(mAdapter));
         itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        mAdapter.riordina("nomeProdotto");
     }
 
     @Override
@@ -63,6 +70,42 @@ public class DispensaFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu2, menu);
+        MenuItem item = menu.findItem(R.id.spinner);
+        final Spinner spinner = (Spinner) MenuItemCompat.getActionView(item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
+                R.array.spinner_list_item_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String opzione=spinner.getSelectedItem().toString();
+                System.out.println(opzione);
+                switch(opzione){
+                    case "Nome":
+                        mAdapter.riordina("nomeProdotto");
+                        break;
+
+                    case "Data":
+                        mAdapter.riordina("scadenza");
+                        break;
+
+                    case "Prezzo":
+                        mAdapter.riordina("prezzo");
+                        break;
+
+                    case "Quantita":
+                        mAdapter.riordina("quatita");
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         super.onCreateOptionsMenu(menu, inflater);
     }
 

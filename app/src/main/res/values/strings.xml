@@ -21,6 +21,18 @@
     <string name="Lista">Lista</string>
     <string name="lista">Lista</string>
 
+    <string-array name="spinner_list_item_array">
+        <item>Data</item>
+        <item>Nome</item>
+        <item>Prezzo</item>
+        <item>Quantita</item>
+    </string-array>
+
+    <string-array name="spinner_list_item_array2">
+        <item>Nome</item>
+        <item>Quantita</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

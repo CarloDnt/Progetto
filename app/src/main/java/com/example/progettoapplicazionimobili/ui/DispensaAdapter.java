@@ -109,4 +109,9 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
         // NOTE: don't call notifyDataSetChanged()
         notifyItemRemoved(position);
     }
+
+    public void riordina(String parametro){
+        mDataset=dispManager.getAllProdotti().sort(parametro);
+        notifyDataSetChanged();
+    }
 }

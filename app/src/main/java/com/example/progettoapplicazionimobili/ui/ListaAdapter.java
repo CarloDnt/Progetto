@@ -83,5 +83,9 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder
 
         notifyItemRemoved(position);
     }
+    public void riordina(String parametro){
+        mDataset=dispManager.getAllNotes().sort(parametro);
+        notifyDataSetChanged();
+    }
 
 }
