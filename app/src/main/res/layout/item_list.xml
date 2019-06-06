@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/riga_lista"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@color/primaryColor"

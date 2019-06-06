@@ -2,17 +2,20 @@ package com.example.progettoapplicazionimobili.ui;
 
 import android.content.Context;
 
-import android.graphics.Color;
+import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.progettoapplicazionimobili.R;
-import com.google.android.material.snackbar.Snackbar;
+
 
 import io.realm.RealmResults;
 
@@ -30,12 +33,14 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
+        public ConstraintLayout foreground;
         public TextView quantitaprodotto;
         public TextView nomeprodotto;
         public MyViewHolder(View v) {
             super(v);
             nomeprodotto=v.findViewById(R.id.text_list);
             quantitaprodotto=v.findViewById(R.id.quantita);
+            foreground=v.findViewById(R.id.riga_lista);
         }
     }
 
@@ -63,12 +68,25 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         //nome prodotto
-        String nomep=mDataset.get(position).getNomeProdotto();
+        final String nomep=mDataset.get(position).getNomeProdotto();
         holder.nomeprodotto.setText(nomep);
 
         //quantità prodotto
-        String quantitap= mDataset.get(position).getQuatita().toString();
+        final String quantitap= mDataset.get(position).getQuatita().toString();
         holder.quantitaprodotto.setText(quantitap);
+
+        holder.foreground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getContext()!= null){
+                    Intent intent=new Intent(getContext(), AggiungiProdotto.class);
+                    intent.putExtra("nome",nomep );
+                    intent.putExtra("quantita",quantitap);
+                    cxt.startActivity(intent);
+                }
+            }
+        });
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

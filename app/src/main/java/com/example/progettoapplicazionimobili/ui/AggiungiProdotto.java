@@ -48,6 +48,14 @@ public class AggiungiProdotto extends AppCompatActivity {
         scadenza=(DatePicker)findViewById(R.id.etPScadenza);
         quantita=(EditText)findViewById(R.id.etPQuantita);
         prezzo=(EditText)findViewById(R.id.etPPrezzo);
+
+        if (getIntent().getExtras() != null) {
+            String nome_get = getIntent().getExtras().getString("nome");
+            String quantita_get = getIntent().getExtras().getString("quantita");
+            nome.setText(nome_get);
+            quantita.setText(quantita_get);
+        }
+
         add=findViewById(R.id.addPro);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
