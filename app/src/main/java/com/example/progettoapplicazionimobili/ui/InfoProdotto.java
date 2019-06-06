@@ -57,33 +57,34 @@ public class InfoProdotto extends AppCompatActivity {
         this.prodotti=dispManager.getAllProdotti();
         setContentView(R.layout.info_prodotto);
 
-        final int indirizzo = getIntent().getExtras().getInt("indirizzo");
+
+        final ProdottoDisp prodotto=getIntent().getExtras().getParcelable("dataset");
 
         immagineProdotto = findViewById(R.id.info_foto);
-        byte[] img=prodotti.get(indirizzo).getImg();
+        byte[] img=prodotto.getImg();
         immagineProdotto.setImageBitmap(BitmapFactory.decodeByteArray(img, 0, img.length));
 
 
         nomeProdotto = findViewById(R.id.info_nome);
-        nomeProdotto.setText(prodotti.get(indirizzo).getNomeProdotto());
+        nomeProdotto.setText(prodotto.getNomeProdotto());
 
         info_quantità = findViewById(R.id.info_quantità);
-        info_quantità.setText(prodotti.get(indirizzo).getQuatita().toString());
+        info_quantità.setText(prodotto.getQuatita().toString());
 
         info_scadenza = findViewById(R.id.info_scadenza);
-        Date scadenza = prodotti.get(indirizzo).getScadenza();
+        Date scadenza = prodotto.getScadenza();
         String scadenzatxt = DateFormat.getDateInstance(DateFormat.LONG).format(scadenza);
         info_scadenza.setText(scadenzatxt);
 
         info_prezzo = findViewById(R.id.info_prezzo);
-        info_prezzo.setText(prodotti.get(indirizzo).getPrezzo().toString());
+        info_prezzo.setText(prodotto.getPrezzo().toString());
 
         add_listaSpesa = findViewById(R.id.info_add);
         add_listaSpesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                NotaLista notaLista = new NotaLista(nomeProdotto.getText().toString(), Integer.parseInt(prodotti.get(indirizzo).getQuatita().toString()));
+                NotaLista notaLista = new NotaLista(nomeProdotto.getText().toString(), Integer.parseInt(prodotto.getQuatita().toString()));
                 listManager.addOrUpdateRealmList(notaLista);
 
                 Intent intent=new Intent(InfoProdotto.this, Home.class);
@@ -91,7 +92,6 @@ public class InfoProdotto extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 }

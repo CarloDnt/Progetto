@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,7 +87,7 @@ public class DispensaAdapter extends RecyclerView.Adapter<DispensaAdapter.MyView
             public void onClick(View v) {
                 if(getContext()!= null){
                     Intent intent=new Intent(getContext(), InfoProdotto.class);
-                    intent.putExtra("indirizzo", position);
+                    intent.putExtra("dataset", (Parcelable) mDataset.get(position));
                     cxt.startActivity(intent);
                 }
             }
